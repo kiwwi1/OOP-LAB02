@@ -10,6 +10,10 @@ public class DigitalVideoDisc {
         this.title = title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public DigitalVideoDisc(String title, String director, String category, float cost) {
         this.title = title;
         this.director = director;
