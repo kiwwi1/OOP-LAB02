@@ -80,4 +80,15 @@ public class DigitalVideoDisc {
     public static int getNbDigitalVideoDiscs() {
         return nbDigitalVideoDiscs;
     }
+
+    public boolean isMatch(String title) {
+        return this.title.equalsIgnoreCase(title);  // Case-insensitive comparison
+    }
+
+    // toString method for DVD details
+    @Override
+    public String toString() {
+        return "DVD - " + title + " - " + category + " - " + director + " - " + length + " mins: " + cost + " $";
+    }
 }
+
