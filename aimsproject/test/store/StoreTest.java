@@ -1,5 +1,8 @@
 package lab002.aimsproject;
 
+import lab002.aimsproject.aims.disc.DigitalVideoDisc;
+import lab002.aimsproject.aims.store.Store;
+
 public class StoreTest {
     public static void main(String[] args) {
         // Tạo các DVD mẫu

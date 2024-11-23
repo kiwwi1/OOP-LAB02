@@ -1,9 +1,7 @@
 package lab002.aimsproject;
 
 
-import java.util.Objects;
-
-import static java.util.Collections.swap;
+import lab002.aimsproject.aims.disc.DigitalVideoDisc;
 
 public class TestPassingParameter {
 
