@@ -1,4 +1,6 @@
-package lab002.aimsproject;
+package lab002.aimsproject.aims.store;
+
+import lab002.aimsproject.aims.media.DigitalVideoDisc;
 
 public class Store {
     private DigitalVideoDisc[] itemsInStore; // Mảng các DVD có trong cửa hàng
