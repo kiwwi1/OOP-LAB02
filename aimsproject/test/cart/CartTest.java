@@ -1,5 +1,8 @@
 package lab002.aimsproject;
 
+import lab002.aimsproject.aims.cart.Cart;
+import lab002.aimsproject.aims.disc.DigitalVideoDisc;
+
 public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
