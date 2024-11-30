@@ -1,14 +1,14 @@
-package lab002.aimsproject;
+package lab002.aimsproject.test.store;
 
-import lab002.aimsproject.aims.disc.DigitalVideoDisc;
+import lab002.aimsproject.aims.media.DigitalVideoDisc;
 import lab002.aimsproject.aims.store.Store;
 
 public class StoreTest {
     public static void main(String[] args) {
         // Tạo các DVD mẫu
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("Movie 1", "Action", "Director 1", 120, 25.0f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Movie 2", "Comedy", "Director 2", 90, 20.0f);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Movie 3", "Drama", "Director 3", 110, 30.0f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc(1, "Action", "Director 1", 120, 25);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc(2, "Comedy", "Director 2", 90, 20);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc(3, "Drama", "Director 3", 110, 30);
 
         // Tạo một cửa hàng mới
         Store store = new Store();
@@ -28,7 +28,7 @@ public class StoreTest {
         store.printStoreDetails();
 
         // Thử xóa một DVD không có trong cửa hàng
-        DigitalVideoDisc dvd4 = new DigitalVideoDisc("Movie 4", "Action", "Director 4", 105, 28.0f);
+        DigitalVideoDisc dvd4 = new DigitalVideoDisc(4, "Action", "Director 4", 105, 28);
         store.removeDVD(dvd4);
     }
 }

@@ -1,7 +1,5 @@
-package lab002.aimsproject;
-import lab002.aimsproject.DigitalVideoDisc;
-import java.util.ArrayList;
-import java.util.List;
+package lab002.aimsproject.aims.cart;
+import lab002.aimsproject.aims.media.DigitalVideoDisc;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
