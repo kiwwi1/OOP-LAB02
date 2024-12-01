@@ -1,0 +1,24 @@
+Lớp nào nên triển khai interface Comparable?
+
+Lớp cần triển khai interface Comparable là lớp đại diện cho đối tượng bạn muốn so sánh. Ví dụ, nếu bạn có một lớp Item đại diện cho sản phẩm trong giỏ hàng (như DVD, sách, v.v.), thì lớp Item sẽ triển khai Comparable<Item> để xác định cách so sánh các đối tượng của lớp này.
+java
+Copy code
+public class Item implements Comparable<Item> {
+    private String title;
+    private double cost;
+
+    // Constructor, getters, setters
+}
+Cách triển khai phương thức compareTo() như thế nào để phản ánh thứ tự mà chúng ta muốn?
+
+Phương thức compareTo() sẽ so sánh đối tượng hiện tại với đối tượng truyền vào và trả về giá trị nguyên (int) để xác định thứ tự. Để phản ánh thứ tự bạn muốn, bạn sẽ so sánh các thuộc tính của đối tượng (ví dụ, so sánh theo title rồi đến cost).
+
+Chúng ta có thể có hai quy tắc sắp xếp của một đối tượng (theo title rồi cost và theo cost rồi title) khi sử dụng Comparable không?
+
+Với Comparable, bạn chỉ có thể định nghĩa một quy tắc sắp xếp duy nhất trong phương thức compareTo(). Nếu bạn muốn hỗ trợ nhiều quy tắc sắp xếp khác nhau (ví dụ: theo title rồi đến cost hoặc theo cost rồi đến title), bạn sẽ cần sử dụng Comparator để xác định các quy tắc sắp xếp khác nhau.
+
+Tuy nhiên, bạn có thể thay đổi cách cài đặt của compareTo() để thay đổi quy tắc sắp xếp nếu cần.
+
+Giả sử DVDs có quy tắc sắp xếp khác với các loại phương tiện khác, đó là theo title, rồi đến độ dài giảm dần, rồi đến cost. Làm thế nào để bạn sửa đổi mã để hỗ trợ điều này?
+
+Để hỗ trợ một quy tắc sắp xếp khác cho DVDs, bạn có thể tạo một lớp con của Item, ví dụ DVD, và ghi đè lại phương thức compareTo() để sử dụng quy tắc sắp xếp riêng cho loại DVD.

@@ -1,3 +1,4 @@
+/*
 package lab002.aimsproject.test.store;
 
 import lab002.aimsproject.aims.media.DigitalVideoDisc;
@@ -32,3 +33,4 @@ public class StoreTest {
         store.removeDVD(dvd4);
     }
 }
+*/

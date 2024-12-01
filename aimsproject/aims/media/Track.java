@@ -2,7 +2,7 @@ package lab002.aimsproject.aims.media;
 
 import java.util.Objects;
 
-public class Track {
+public class Track implements Playable {
     private String title;
     private int length;
 
@@ -32,5 +32,11 @@ public class Track {
     @Override
     public int hashCode() {
         return Objects.hash(title, length);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing track: " + this.title);
+        System.out.println("Track Length: " + this.length);
     }
 }

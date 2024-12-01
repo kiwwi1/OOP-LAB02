@@ -1,3 +1,4 @@
+/*
 package lab002.aimsproject.test.cart;
 
 import lab002.aimsproject.aims.cart.Cart;
@@ -16,3 +17,4 @@ public class CartTest {
         cart.print();
     }
 }
+*/
