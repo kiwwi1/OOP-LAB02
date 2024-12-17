@@ -1,63 +1,75 @@
-package lab002.aimsproject.aims.media;
+package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
+import java.util.Objects;
 
 public abstract class Media {
-    // Common fields
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
 
-    // Constructor
-    public Media(int id, String title, String category, float cost) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
-    }
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitle()
+			.thenComparing(new MediaComparatorByCost());
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCost()
+			.thenComparing(new MediaComparatorByTitle());
 
-    public Media(String category) {
-        this.category = category;
-    }
+	private static int nbMedia = 0;
+	protected int id;
+	protected String title;
+	protected String category;
+	protected float cost;
 
-    // Getters and Setters
-    public int getId() {
-        return id;
-    }
+	public Media() {
+		super();
+		this.id = ++nbMedia;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Media(String title) {
+		this();
+		this.title = title;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public Media(String title, String category, float cost) {
+		this(title);
+		this.category = category;
+		this.cost = cost;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public boolean isMatch(String title) {
+		String[] keywords = title.split("\\s+");
+		for (String word : keywords) {
+			if (this.title.toLowerCase().contains(word.toLowerCase()))
+				return true;
+		}
+		return false;
+	}
 
-    public String getCategory() {
-        return category;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public float getCost() {
-        return cost;
-    }
+	public String getCategory() {
+		return category;
+	}
 
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
+	public float getCost() {
+		return cost;
+	}
 
-    public static final Comparator<Media> COMPARE_BY_TITLE_COST =
-            new MediaComparatorByTitleCost();
+	abstract public String getDetails();
+	//Lê Chí Dũng 20210216
 
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE =
-            new MediaComparatorByCostTitle();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Media other = (Media) obj;
+		return Objects.equals(title, other.title);
+	}
+
 }
-

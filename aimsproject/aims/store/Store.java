@@ -1,50 +1,51 @@
-package lab002.aimsproject.aims.store;
-
-import lab002.aimsproject.aims.media.Media;
+package hust.soict.hedspi.aims.store;
 
 import java.util.ArrayList;
 
+import hust.soict.hedspi.aims.exception.DuplicatedItemException;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
+
 public class Store {
-    private ArrayList<Media> itemsInStore = new ArrayList<>();
-    private static final int MAX_ITEMS_IN_STORE = 50; // Maximum capacity of the store
 
-    // Add a media item to the store
-    public void addMedia(Media media) {
-        if (itemsInStore.size() < MAX_ITEMS_IN_STORE) {
-            if (!itemsInStore.contains(media)) {
-                itemsInStore.add(media);
-                System.out.println("The item \"" + media.getTitle() + "\" has been added to the store.");
-            } else {
-                System.out.println("The item \"" + media.getTitle() + "\" is already in the store.");
-            }
-        } else {
-            System.out.println("The store is full, cannot add more items.");
-        }
-    }
+	private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    // Remove a media item from the store
-    public void removeMedia(Media media) {
-        if (itemsInStore.remove(media)) {
-            System.out.println("The item \"" + media.getTitle() + "\" has been removed from the store.");
-        } else {
-            System.out.println("The item \"" + media.getTitle() + "\" was not found in the store.");
-        }
-    }
+	public void addMedia(Media media) throws DuplicatedItemException {
+		if (itemsInStore.contains(media)) {
+			throw new DuplicatedItemException("ERROR: Item already exists.");
+		} else {
+			itemsInStore.add(0, media);
+			System.out.println("Added " + media.toString() + " to store.");
+		}
+	}
 
-    // Print the details of all media items in the store
-    public void printStoreDetails() {
-        System.out.println("************** STORE INVENTORY **************");
-        if (itemsInStore.isEmpty()) {
-            System.out.println("The store is empty.");
-        } else {
-            for (int i = 0; i < itemsInStore.size(); i++) {
-                System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
-            }
-        }
-        System.out.println("*********************************************");
-    }
+	public void removeMedia(Media media) {
+		if (itemsInStore.remove(media)) {
+			System.out.println("Removed " + media.toString() + " from store.");
+		} else {
+			System.out.println("Couldn't find this item.");
+		}
+	}
+	
+	public void displayItems() {
+		System.out.println("\n***********************STORE***********************");
+		for (Media m: itemsInStore) {
+			System.out.println(m.toString());
+		}
+		System.out.println("***************************************************");
+	}
+	
+	
+	public Media fetchMedia(String title) {
+		for (Media m : itemsInStore) {
+			if (m.isMatch(title))
+				return m;
+		}
+		return null;
+	}
 
-    public Media findMediaByTitle(String title) {
-        return itemsInStore.stream().filter(media -> media.getTitle().equals(title)).findFirst().orElse(null);
-    }
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
 }
