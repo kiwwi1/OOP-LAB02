@@ -1,0 +1,10 @@
+Java là ngôn ngữ truyền tham trị (pass-by-value). Tuy nhiên, cách Java xử lý đối tượng (object) có thể khiến nhiều người nhầm lẫn. Dưới đây là giải thích chi tiết:
+
+Truyền tham trị trong Java
+Khi một biến được truyền vào phương thức, Java sẽ tạo một bản sao giá trị của biến và sử dụng bản sao này trong phương thức.
+Với kiểu dữ liệu nguyên thủy (primitive types) như int, float, boolean, giá trị thực sự của biến được sao chép. Do đó, mọi thay đổi trong phương thức không ảnh hưởng đến giá trị ban đầu của biến.
+Cách đối tượng hoạt động trong Java
+Khi truyền một đối tượng vào phương thức, Java không truyền trực tiếp đối tượng mà chỉ truyền bản sao của tham chiếu đến đối tượng (tức là địa chỉ trong bộ nhớ).
+Điều này dẫn đến:
+Nếu thay đổi thuộc tính của đối tượng thông qua tham chiếu này, thay đổi sẽ được phản ánh bên ngoài phương thức vì tham chiếu đó vẫn trỏ đến cùng một đối tượng trong bộ nhớ.
+Nếu gán lại tham chiếu để trỏ đến một đối tượng mới, tham chiếu ban đầu bên ngoài phương thức không bị ảnh hưởng.
